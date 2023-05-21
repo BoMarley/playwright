@@ -1,6 +1,6 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Locator, Page } from "@playwright/test";
 import { NewContactForm } from "../page_objects/NewContactForm";
-import {ContactInfo} from "./ContactInfo";
+import { ContactInfo } from "./ContactInfo";
 
 export class ContactsPage {
     readonly page: Page;
@@ -28,7 +28,7 @@ export class ContactsPage {
         await this.page.locator('button i.fa.fa-trash').first().click();
         await this.page.getByTitle('Delete').click();
         await this.page.getByTitle('Refresh').click();
-        return ContactsPage;
+        return new ContactsPage(this.page);
     }
 
     async openTopContact(page): Promise<ContactInfo> {

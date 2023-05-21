@@ -1,4 +1,4 @@
-import { expect, Locator, Page, selectors } from '@playwright/test';
+import { expect, Locator, Page } from "@playwright/test";
 import { ContactData } from "../data/ContactData";
 import { NewContactForm } from "./NewContactForm";
 

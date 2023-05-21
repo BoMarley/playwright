@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../page_objects/LoginPage";
-import { ContactsPage } from "../page_objects/ContactsPage";
 import { Users } from "../data/Users";
 import { contactsPageURL, loginPageURL } from "../data/GeneralData";
 import { ContactData } from "../data/ContactData";
+import { LoginPage } from "../page_objects/LoginPage";
+import { ContactsPage } from "../page_objects/ContactsPage";
 
 test.beforeEach(async ({ page }, testInfo) => {
     await page.goto(loginPageURL);

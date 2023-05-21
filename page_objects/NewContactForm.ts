@@ -1,6 +1,5 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Locator, Page } from "@playwright/test";
 import { ContactInfo } from "./ContactInfo";
-import { ContactData } from "../data/ContactData";
 
 export class NewContactForm {
     readonly page: Page;

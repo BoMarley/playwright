@@ -1,8 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { Users } from '../data/Users';
+import { test, expect } from "@playwright/test";
+import { Users } from "../data/Users";
 import { loginPageURL, mainDashboardURL } from "../data/GeneralData";
-import { LoginPage } from '../page_objects/LoginPage';
-import { TopBar } from "../page_objects/TopBar";
+import { LoginPage } from "../page_objects/LoginPage";
 
 test('Login', async ({ page }) => {
     // Actions
