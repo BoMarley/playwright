@@ -17,7 +17,7 @@ test('Add contact', async ({ page }) => {
     const contactsPage = new ContactsPage(page);
     const contactsCountBefore = await contactsPage.countExistingContacts();
     const newContactForm = await contactsPage.clickCreateContactButton(page);
-    const contactInfo = await newContactForm.createNewContact(page, ContactData.ValidContactDataForCreation);
+    const contactInfo = await newContactForm.createNewContact(ContactData.ValidContactDataForCreation);
 
     //Validation
     await contactInfo.validateContactInfoPageContent();
@@ -32,14 +32,14 @@ test('Edit contact', async ({ page }) => {
     let contactsCount = await contactsPage.countExistingContacts();
     if (contactsCount < 2) {
         const newContactForm = await contactsPage.clickCreateContactButton(page);
-        const contactInfo = await newContactForm.createNewContact(page, ContactData.ValidContactDataForCreation);
+        const contactInfo = await newContactForm.createNewContact(ContactData.ValidContactDataForCreation);
         await page.goto(contactsPageURL);
     }
 
     //Actions
     const contactInfo = await contactsPage.openTopContact(page);
     let contactNameBefore = await contactInfo.getContactName();
-    const newContactForm = await contactInfo.clickEditButton(page);
+    const newContactForm = await contactInfo.clickEditButton();
     await newContactForm.changeNameToUnique(contactNameBefore, ' Changed');
 
     //Validation
@@ -53,13 +53,13 @@ test('Delete contact', async ({ page }) => {
     let contactsCount = await contactsPage.countExistingContacts();
     if (contactsCount < 2) {
         const newContactForm = await contactsPage.clickCreateContactButton(page);
-        const contactInfo = await newContactForm.createNewContact(page, ContactData.ValidContactDataForCreation);
+        await newContactForm.createNewContact(ContactData.ValidContactDataForCreation);
         await page.goto(contactsPageURL);
     }
 
     //Actions
     const contactsCountBefore = await contactsPage.countExistingContacts();
-    await contactsPage.deleteContact(page);
+    await contactsPage.deleteContact();
     const contactsCountAfter = await contactsPage.countExistingContacts();
 
     //Validation

@@ -38,7 +38,7 @@ export class NewContactForm {
         this.createButton = page.getByTitle('Create');
     }
 
-    async createNewContact(page, dataForContactCreation) {
+    async createNewContact(dataForContactCreation) {
         await this.fillAllFieldsWithData(dataForContactCreation);
         await this.createButton.click();
         return new ContactInfo(this.page);

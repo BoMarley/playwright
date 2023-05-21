@@ -24,7 +24,7 @@ export class ContactsPage {
         return new NewContactForm(page);
     }
 
-    async deleteContact(page) {
+    async deleteContact() {
         await this.page.locator('button i.fa.fa-trash').first().click();
         await this.page.getByTitle('Delete').click();
         await this.page.getByTitle('Refresh').click();

@@ -35,8 +35,8 @@ export class ContactInfo {
         return contactName;
     }
 
-    async clickEditButton(page) {
+    async clickEditButton() {
         await this.editButton.click();
-        return new NewContactForm(page);
+        return new NewContactForm(this.page);
     }
 }

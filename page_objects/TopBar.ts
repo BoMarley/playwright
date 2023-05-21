@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import {LoginPage} from "./LoginPage";
 
 export class TopBar {
     readonly page: Page;
@@ -12,8 +13,9 @@ export class TopBar {
 
     }
 
-    async doLogout() {
+    async doLogout(page) {
         await this.userProfileMenu.click();
         await this.logoutButton.click();
+        return new LoginPage(page);
     }
 }
