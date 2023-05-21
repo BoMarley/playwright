@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { Users } from "../data/Users";
-import {contactsPageURL, loginPageURL, mainDashboardURL} from "../data/GeneralData";
+import { loginPageURL, mainDashboardURL} from "../data/GeneralData";
 import { LoginPage } from "../page_objects/LoginPage";
 
 test.beforeEach(async ({ page }, testInfo) => {
