@@ -8,7 +8,7 @@ import { ContactsPage } from "../page_objects/ContactsPage";
 test.beforeEach(async ({ page }, testInfo) => {
     await page.goto(loginPageURL);
     const loginPage = new LoginPage(page);
-    await loginPage.doLogin(page, Users.User01);
+    await loginPage.doLogin(Users.User01);
     await page.goto(contactsPageURL);
 });
 
@@ -16,7 +16,7 @@ test('Add contact', async ({ page }) => {
     //Actions
     const contactsPage = new ContactsPage(page);
     const contactsCountBefore = await contactsPage.countExistingContacts();
-    const newContactForm = await contactsPage.clickCreateContactButton(page);
+    const newContactForm = await contactsPage.clickCreateContactButton();
     const contactInfo = await newContactForm.createNewContact(ContactData.ValidContactDataForCreation);
 
     //Validation
@@ -31,7 +31,7 @@ test('Edit contact', async ({ page }) => {
     const contactsPage = new ContactsPage(page);
     let contactsCount = await contactsPage.countExistingContacts();
     if (contactsCount < 2) {
-        const newContactForm = await contactsPage.clickCreateContactButton(page);
+        const newContactForm = await contactsPage.clickCreateContactButton();
         const contactInfo = await newContactForm.createNewContact(ContactData.ValidContactDataForCreation);
         await page.goto(contactsPageURL);
     }
@@ -52,7 +52,7 @@ test('Delete contact', async ({ page }) => {
     const contactsPage = new ContactsPage(page);
     let contactsCount = await contactsPage.countExistingContacts();
     if (contactsCount < 2) {
-        const newContactForm = await contactsPage.clickCreateContactButton(page);
+        const newContactForm = await contactsPage.clickCreateContactButton();
         await newContactForm.createNewContact(ContactData.ValidContactDataForCreation);
         await page.goto(contactsPageURL);
     }

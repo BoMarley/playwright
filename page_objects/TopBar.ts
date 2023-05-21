@@ -13,9 +13,13 @@ export class TopBar {
 
     }
 
-    async doLogout(page) {
+    async isTopBarLoaded() {
+        await this.userProfileMenu.isVisible();
+    }
+
+    async doLogout() {
         await this.userProfileMenu.click();
         await this.logoutButton.click();
-        return new LoginPage(page);
+        return new LoginPage(this.page);
     }
 }

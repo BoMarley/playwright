@@ -19,9 +19,9 @@ export class ContactsPage {
         return (numberOfContacts - 1);
     }
 
-    async clickCreateContactButton(page) {
+    async clickCreateContactButton() {
         await this.createContactButton.click();
-        return new NewContactForm(page);
+        return new NewContactForm(this.page);
     }
 
     async deleteContact() {

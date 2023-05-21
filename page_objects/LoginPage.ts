@@ -14,12 +14,17 @@ export class LoginPage {
         this.signInButton = page.getByText('Sign in');
     }
 
-    async doLogin (page, User: { password: string; email: string }) {
+    async doLogin (User: { password: string; email: string }) {
         await this.emailInputField.fill(User.email)
         await this.passwordInputField.fill(User.password);
         await this.signInButton.click();
         await this.page.locator('nav').waitFor();
-        return new TopBar(page);
+        return new TopBar(this.page);
+    }
+
+    async isLoginPageLoaded() {
+        await this.emailInputField.isVisible();
+        await this.passwordInputField.isVisible();
     }
 }
 
