@@ -14,7 +14,7 @@ export class TopBar {
     }
 
     async isTopBarLoaded() {
-        await this.userProfileMenu.isVisible();
+        await this.userProfileMenu.waitFor();
     }
 
     async doLogout() {

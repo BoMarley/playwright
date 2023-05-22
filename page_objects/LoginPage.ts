@@ -23,8 +23,8 @@ export class LoginPage {
     }
 
     async isLoginPageLoaded() {
-        await this.emailInputField.isVisible();
-        await this.passwordInputField.isVisible();
+        await this.emailInputField.waitFor();
+        await this.passwordInputField.waitFor();
     }
 }
 
