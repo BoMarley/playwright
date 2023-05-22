@@ -1,4 +1,5 @@
-import { Locator, Page } from "@playwright/test";
+import {expect, Locator, Page} from "@playwright/test";
+import {paymentMethodsPageURL} from "../data/GeneralData";
 
 export class PaymentMethodsPage {
     readonly page: Page;
@@ -11,6 +12,7 @@ export class PaymentMethodsPage {
     }
 
     async isPaymentMethodsPageLoaded() {
+        await expect(this.page).toHaveURL(paymentMethodsPageURL);
         await this.addNewCardButton.waitFor();
     }
 }

@@ -1,5 +1,6 @@
-import { Locator, Page } from "@playwright/test";
+import {expect, Locator, Page} from "@playwright/test";
 import {LoginPage} from "./LoginPage";
+import {mainDashboardURL} from "../data/GeneralData";
 
 export class TopBar {
     readonly page: Page;
@@ -13,7 +14,8 @@ export class TopBar {
 
     }
 
-    async isTopBarLoaded() {
+    async isMainDashboardPageLoaded() {
+        await expect(this.page).toHaveURL(mainDashboardURL);
         await this.userProfileMenu.waitFor();
     }
 

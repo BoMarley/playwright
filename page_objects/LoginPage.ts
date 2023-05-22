@@ -1,5 +1,6 @@
-import { Locator, Page } from '@playwright/test';
+import {expect, Locator, Page} from '@playwright/test';
 import { TopBar } from "./TopBar";
+import {loginPageURL} from "../data/GeneralData";
 
 export class LoginPage {
     readonly page: Page;
@@ -23,6 +24,7 @@ export class LoginPage {
     }
 
     async isLoginPageLoaded() {
+        await expect(this.page).toHaveURL(loginPageURL);
         await this.emailInputField.waitFor();
         await this.passwordInputField.waitFor();
     }

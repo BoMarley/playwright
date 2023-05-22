@@ -13,8 +13,7 @@ test('Login', async ({ page }) => {
     const topBar = await loginPage.doLogin(Users.User01);
 
     // Validation
-    await expect(page).toHaveURL(mainDashboardURL);
-    await topBar.isTopBarLoaded();
+    await topBar.isMainDashboardPageLoaded();
 });
 
 test('Logout', async ({ page }) => {
@@ -24,6 +23,5 @@ test('Logout', async ({ page }) => {
     await topBar.doLogout();
 
     // Validation
-    await expect(page).toHaveURL(loginPageURL);
     await loginPage.isLoginPageLoaded();
 });
